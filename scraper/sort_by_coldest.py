@@ -2,15 +2,13 @@ import urllib2    # Open URLs in python
 import json       # Encode and Decode JSON
 
 # Load the province-city dictionary from json
-f = open("canadian cities.json", "r")
+f = open("canadian_cities.json", "r")
 province_hash = json.load(f)
 f.close()
 temp_hash = {}
 
 for province in province_hash:
    for city in province_hash[province]:
-      print city
-      print province
       try:
          # Use a weather API to fetch a JSON for the city
          result = urllib2.urlopen(
@@ -47,6 +45,6 @@ for k in sorted_keys:
    for v in temp_hash[k]:
       results["sorted cities"].append(v)
 
-f = open('sorted cities.json', 'w')
+f = open('sorted_cities.json', 'w')
 json.dump(results, f)
 f.close()

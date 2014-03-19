@@ -5,7 +5,7 @@ var data;
 // Non-asynchronous function that fetches data
 
 $.ajax({
-    url: './scraper/sencha_data.json',
+    url: 'api/city-data',
     dataType: 'json',
     async: false,
     data: mydata,
@@ -76,7 +76,7 @@ Ext.define('ColdSpots.view.Main', {
                 xtype: 'carousel',
                 iconCls: 'info',
                 title: 'Cities',
-                direction: 'horizontal',
+                direction: 'vertical',
                 items: [
                     {
                         layout: {
@@ -85,7 +85,7 @@ Ext.define('ColdSpots.view.Main', {
                             pack: 'center'
                         },
                         items: [{
-                            html: data["city names"][0]
+                            html: data["city names"][0].toUpperCase()
                         }]
                     },
                     {
@@ -95,7 +95,7 @@ Ext.define('ColdSpots.view.Main', {
                             pack: 'center'
                         },
                         items: [{
-                            html: data["city names"][1]
+                            html: data["city names"][1].toUpperCase()
                         }]
                     },
                     {
@@ -105,7 +105,7 @@ Ext.define('ColdSpots.view.Main', {
                             pack: 'center'
                         },
                         items: [{
-                            html: data["city names"][1]
+                            html: data["city names"][2].toUpperCase()
                         }]
                     },
                     {
@@ -115,7 +115,7 @@ Ext.define('ColdSpots.view.Main', {
                             pack: 'center'
                         },
                         items: [{
-                            html: data["city names"][2]
+                            html: data["city names"][3].toUpperCase()
                         }]
                     },
                     {
@@ -125,7 +125,7 @@ Ext.define('ColdSpots.view.Main', {
                             pack: 'center'
                         },
                         items: [{
-                            html: data["city names"][3]
+                            html: data["city names"][4].toUpperCase()
                         }]
                     },
                     {
@@ -135,7 +135,7 @@ Ext.define('ColdSpots.view.Main', {
                             pack: 'center'
                         },
                         items: [{
-                            html: data["city names"][4]
+                            html: data["city names"][5].toUpperCase()
                         }]
                     },
                     {
@@ -145,7 +145,7 @@ Ext.define('ColdSpots.view.Main', {
                             pack: 'center'
                         },
                         items: [{
-                            html: data["city names"][5]
+                            html: data["city names"][6].toUpperCase()
                         }]
                     },
                     {
@@ -155,7 +155,7 @@ Ext.define('ColdSpots.view.Main', {
                             pack: 'center'
                         },
                         items: [{
-                            html: data["city names"][6]
+                            html: data["city names"][7].toUpperCase()
                         }]
                     },
                     {
@@ -165,7 +165,7 @@ Ext.define('ColdSpots.view.Main', {
                             pack: 'center'
                         },
                         items: [{
-                            html: data["city names"][7]
+                            html: data["city names"][8].toUpperCase()
                         }]
                     },
                     {
@@ -175,7 +175,7 @@ Ext.define('ColdSpots.view.Main', {
                             pack: 'center'
                         },
                         items: [{
-                            html: data["city names"][8]
+                            html: data["city names"][9].toUpperCase()
                         }]
                     },
                 ]

@@ -9,7 +9,7 @@ prov_codes = {"alberta": "AB", "british columbia": "BC", "manitoba": "MB", "new 
 "ontario": "ON", "prince edward island": "PE", "quebec": "QC", "saskatchewan": "SK", "yukon": "YT"}
 
 # Load the province-city dictionary from json
-f = open("sorted cities.json", "r")
+f = open("sorted_cities.json", "r")
 data = json.load(f)
 f.close()
 
@@ -29,23 +29,23 @@ for value in data["sorted cities"]:
    try:
       maps_result = urllib2.urlopen(
       'http://maps.googleapis.com/maps/api/geocode/json?address=' +
-      city + ',+' + province + ',+Canada&sensor=false&libraries=weather')
+      city + ',+' + province + ',+Canada&sensor=false')
    except urllib2.HTTPError:
       pass
-   print maps_result
-   maps_result = json.loads(maps_result.read())
+   try:
+      maps_result = json.loads(maps_result.read())
+   except AttributeError:
+      # If there is valid location data then continue
+      if maps_result['results'][0]['geometry']['location']:
+         continue
    lat = maps_result['results'][0]['geometry']['location']['lat']
    lon = maps_result['results'][0]['geometry']['location']['lng']
 
-   # Add the city codes, their names and their coordinates
-   # results["city codes"].append(city_code)
    results["city names"].append(value)
    results["lat"].append(lat)
    results["lon"].append(lon)
 
-         #    i+=1
-         # break
 
-f = open('sencha_data.json', 'w')
+f = open("sencha_data.json", 'w')
 json.dump(results, f)
 f.close()

@@ -27,6 +27,6 @@ for p in provinces:
             canadian_cities[province].append(city)
 
 # Write to JSON file
-f = open('canadian cities.json', 'w')
+f = open('canadian_cities.json', 'w')
 json.dump(canadian_cities, f)
 f.close()
