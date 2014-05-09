@@ -1,6 +1,4 @@
 import json       # Encode and Decode JSON
-import mechanize  # HTML parser 
-import re         # Regular expressions library
 import urllib2    # Open URLs in python
 
 
@@ -12,8 +10,6 @@ prov_codes = {"alberta": "AB", "british columbia": "BC", "manitoba": "MB", "new 
 f = open("sorted_cities.json", "r")
 data = json.load(f)
 f.close()
-
-br = mechanize.Browser()
 
 i=0
 
@@ -31,13 +27,16 @@ for value in data["sorted cities"]:
       'http://maps.googleapis.com/maps/api/geocode/json?address=' +
       city + ',+' + province + ',+Canada&sensor=false')
    except urllib2.HTTPError:
-      pass
+      continue
    try:
       maps_result = json.loads(maps_result.read())
    except AttributeError:
       # If there is valid location data then continue
       if maps_result['results'][0]['geometry']['location']:
          continue
+   if maps_result == []:
+      continue
+   print maps_result
    lat = maps_result['results'][0]['geometry']['location']['lat']
    lon = maps_result['results'][0]['geometry']['location']['lng']
 
